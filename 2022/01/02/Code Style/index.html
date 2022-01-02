@@ -1,0 +1,544 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/cyc0916/CDN@1.0/Blog/Home/icon.ico">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/cyc0916/CDN@1.0/Blog/Home/icon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Jason Cai">
+  <meta name="keywords" content="">
+  <meta name="description" content="所有头文件必须写在最开头，不应该使用&quot;&quot;而该使用&lt;&gt;， #include与&lt;&gt;之间需要有空格 注：非必要不使用#include &lt;bits&#x2F;stdc++.h&gt; Example: 123#include &lt;iostream&gt;  可以使用using namespace std;也可以在具体代码中写入std::。  关于大括号，若if&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cyc&#39;s Code Style">
+<meta property="og:url" content="http://example.com/2022/01/02/Code%20Style/index.html">
+<meta property="og:site_name" content="cycの小屋">
+<meta property="og:description" content="所有头文件必须写在最开头，不应该使用&quot;&quot;而该使用&lt;&gt;， #include与&lt;&gt;之间需要有空格 注：非必要不使用#include &lt;bits&#x2F;stdc++.h&gt; Example: 123#include &lt;iostream&gt;  可以使用using namespace std;也可以在具体代码中写入std::。  关于大括号，若if&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-02T10:47:21.000Z">
+<meta property="article:modified_time" content="2022-01-02T14:01:44.268Z">
+<meta property="article:author" content="Jason Cai">
+<meta property="article:tag" content="OI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>cyc&#39;s Code Style - cycの小屋</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":3},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>cycの小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="cyc&#39;s Code Style">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-02 18:47" pubdate>
+        2022年1月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">cyc&#39;s Code Style</h1>
+            
+            <div class="markdown-body">
+              <p>所有头文件必须写在最开头，不应该使用<code>&quot;&quot;</code>而该使用<code>&lt;&gt;</code>，</p>
+<p><code>#include</code>与<code>&lt;&gt;</code>之间需要有空格</p>
+<p>注：非必要不使用<code>#include &lt;bits/stdc++.h&gt;</code></p>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+<hr>
+<p>可以使用<code>using namespace std;</code>也可以在具体代码中写入<code>std::</code>。</p>
+<hr>
+<p>关于大括号，若<code>if/for/while</code>等语句，在其内容中只有一行的，不应加大括号，使用空格分开</p>
+<p>在必须加入大括号时，左括号不换行，有括号换行</p>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">while</span>(l&lt;r)&#123;<br>        l++,r--;<br>        <span class="hljs-keyword">if</span>(l&lt;=m) Ans++;<br>        <span class="hljs-keyword">else</span> Cnt--;<br>        <span class="hljs-keyword">if</span>(r&gt;s)&#123;<br>            Flag=<span class="hljs-literal">true</span>;<br>            Ans--;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<hr>
+<p>关于空格的添加，非必要不添加空格在表达式中</p>
+<hr>
+<p>命名：统一使用驼峰命名和类匈牙利命名发，在名称仅有1～2个字符时除外</p>
+<hr>
+<p>关于输入输出，在输入过于复杂时在main函数外新建void类函数Input，用于输入，输出同理</p>
+<p>在必须时使用<code>scanf和printf</code>，否则使用<code>cin和cout</code></p>
+<p>尽量使用<code>cin.tie(0);cout.tie(0)</code>而不使用<code>ios::sync_with_stdio(false);</code></p>
+<p>在使用快速输入时和快速输出时尽量都使用快速输入时和快速输出函数，而不是其他的输入输出方式</p>
+<hr>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span>&#123;</span><br>    string s1,s2;<br>    <span class="hljs-keyword">int</span> Itr;<br>&#125;;<br><span class="hljs-keyword">int</span> Longa;<br>Node a;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">Read</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">int</span> x=<span class="hljs-number">0</span>,f=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">char</span> ch=<span class="hljs-built_in">getchar</span>();<br>    <span class="hljs-keyword">while</span>(ch&lt;<span class="hljs-string">&#x27;0&#x27;</span>||ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>)&#123;<br>        <span class="hljs-keyword">if</span>(ch==<span class="hljs-string">&#x27;-&#x27;</span>) f=<span class="hljs-number">-1</span>;<br>        ch=<span class="hljs-built_in">getchar</span>();<br>    &#125;<br>    <span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>)&#123;<br>        x=x*<span class="hljs-number">10</span>+ch-<span class="hljs-string">&#x27;0&#x27;</span>;<br>        ch=<span class="hljs-built_in">getchar</span>();<br>    &#125;<br>    <span class="hljs-keyword">return</span> x*f;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(x&lt;<span class="hljs-number">0</span>) <span class="hljs-built_in">putchar</span>(<span class="hljs-string">&#x27;-&#x27;</span>),x=-x;<br>    <span class="hljs-keyword">if</span>(x&gt;<span class="hljs-number">9</span>) <span class="hljs-built_in">write</span>(x/<span class="hljs-number">10</span>);<br>    <span class="hljs-built_in">putchar</span>(x%<span class="hljs-number">10</span>+<span class="hljs-string">&#x27;0&#x27;</span>);<br>    <span class="hljs-keyword">return</span> ;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">read</span>(Longa);<br>    cin&gt;&gt;a.s1&gt;&gt;a.s2;<br>    <span class="hljs-built_in">read</span>(a.Itr);<br>    <span class="hljs-keyword">if</span>(Itr&gt;<span class="hljs-number">0</span>) <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;I AK IOI\n&quot;</span>);<br>    <span class="hljs-keyword">else</span> <span class="hljs-built_in">write</span>(a.s1);<br>    <span class="hljs-built_in">write</span>(a.s2);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OI/">OI</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/01/2022/">
+                        <span class="hidden-mobile">2022</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://blog-waline-api-4xlzxx71d-cyc0916.vercel.app/","path":"window.location.pathname","placeholder":"发条友善的评论见证下~","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili/","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"wavatar","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true,"js":"https://cdn.jsdelivr.net/npm/@waline/client@1/dist/"},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":200,"height":400,"hOffset":-16,"vOffset":-16},"mobile":{"show":true},"react":{"opacity":0.75},"log":false});</script></body>
+</html>
+<script type="text/javascript" src="/js/love.js"></script>

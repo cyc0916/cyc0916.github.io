@@ -1,0 +1,558 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/cyc0916/CDN@1.0/Blog/Home/icon.ico">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/cyc0916/CDN@1.0/Blog/Home/icon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="题目传送门
+调了两个月终于调出来了
+首先看数据范围： 1\le n \le 10^5 且 1\le m\le 3\times 10^5">
+  <meta name="author" content="Jason Cai">
+  <meta name="keywords" content="">
+  <meta name="description" content="题目传送门 调了两个月终于调出来了 首先看数据范围： 1\le n \le 10^5 且 1\le m\le 3\times 10^5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="洛谷P7745 [COCI2011-2012#3] ROBOT 题解">
+<meta property="og:url" content="http://example.com/2021/11/18/%E6%B4%9B%E8%B0%B7P7745/index.html">
+<meta property="og:site_name" content="cycの小屋">
+<meta property="og:description" content="题目传送门 调了两个月终于调出来了 首先看数据范围： 1\le n \le 10^5 且 1\le m\le 3\times 10^5">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/61zo4byi.png">
+<meta property="og:image" content="https://bu.dusays.com/2021/11/16/127e4f7aab5b5.gif">
+<meta property="article:published_time" content="2021-11-18T04:12:45.000Z">
+<meta property="article:modified_time" content="2021-11-22T13:53:50.035Z">
+<meta property="article:author" content="Jason Cai">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="洛谷">
+<meta property="article:tag" content="COCI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/61zo4byi.png">
+  
+  <title>洛谷P7745 [COCI2011-2012#3] ROBOT 题解 - cycの小屋</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":3},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>cycの小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="洛谷P7745 [COCI2011-2012#3] ROBOT 题解">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-18 12:12" pubdate>
+        2021年11月18日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      740 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">洛谷P7745 [COCI2011-2012#3] ROBOT 题解</h1>
+            
+            <div class="markdown-body">
+              <a class="btn" href="https://www.luogu.com.cn/problem/P7745"  title="题目传送门" target="_blank">题目传送门</a>
+<p>调了两个月终于调出来了</p>
+<p>首先看数据范围： <script type="math/tex">1\le n \le 10^5</script> 且 <script type="math/tex">1\le m\le 3\times 10^5</script></p>
+<span id="more"></span>
+<p>纯根据题意模拟的 <script type="math/tex">O(n+mn)</script>肯定过不了</p>
+<p>这时候就需要预处理。</p>
+<h3 id="对于曼哈顿距离，我们可以把它想象成一个点到另一个点的最短路，这边放个图例来方便理解"><a href="#对于曼哈顿距离，我们可以把它想象成一个点到另一个点的最短路，这边放个图例来方便理解" class="headerlink" title="对于曼哈顿距离，我们可以把它想象成一个点到另一个点的最短路，这边放个图例来方便理解"></a>对于曼哈顿距离，我们可以把它想象成一个点到另一个点的最短路，这边放个图例来方便理解</h3><p><img src="https://cdn.luogu.com.cn/upload/image_hosting/61zo4byi.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如图，容易发现：</p>
+<p>图上 <script type="math/tex">x</script> 轴距离和为 $1+1=2$ ，<script type="math/tex">y</script> 轴距离和为$1+2=3$</p>
+<p><script type="math/tex">x</script>,   <script type="math/tex">y</script> 轴距离和相加即为两个控制点到 ROBOT 的曼哈顿距离。</p>
+<p>一提到预处理，首先我们想到的是前缀和。</p>
+<p>求数组前缀和的方式十分简单，仅需要写一个循环，例如下方代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">2000000</span>;i++) <br>    xa[i]=xa[i<span class="hljs-number">-1</span>]+xa[i]; <span class="hljs-comment">//计算前缀和核心代码，下同</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">2000000</span>;i++) <br>    ya[i]=ya[i<span class="hljs-number">-1</span>]+ya[i];<br></code></pre></td></tr></table></figure>
+<p>在得到前缀和后，根据题意，容易得出每次移动对于每个控制点到ROBOT的距离 $+1$ 或 <code>$-1$</code> ，我们只需要详细写出 $+1$ 或 $-1$ 即可。</p>
+<p>同样的，这边放一个 gif 来演示收到 “J” 指令是的操作情况。</p>
+<p><img src="https://bu.dusays.com/2021/11/16/127e4f7aab5b5.gif" srcset="/img/loading.gif" lazyload alt=""><br>(如果 gif 挂了请@或私信我)</p>
+<p>举例当指令为 “S” 时：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27;S&#x27;</span>)&#123;<br>    tot=+yn[y+zs]; <span class="hljs-comment">//需要+1的数</span><br>    tot-=n-yn[y+zs]; <span class="hljs-comment">//除去需要+1的，即为需要-1的</span><br>    y++; <span class="hljs-comment">//对应题目</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在一系列例如上方的处理后，我们仅需要提前(在输入每个机器人坐标时)算出初始距离，并对这个初始距离进行加减即可。</p>
+<p>写完后发现时间复杂度仅有 <script type="math/tex">O(n+m)</script>，可以轻松通过</p>
+<p><strong>当然，此题也可以用 STL 中的 lower_bound 和 upper_bound 写。</strong></p>
+<h3 id="需要注意的是，为防止数组下标为负数，需要给每一个数组下标都加一个常量"><a href="#需要注意的是，为防止数组下标为负数，需要给每一个数组下标都加一个常量" class="headerlink" title="需要注意的是，为防止数组下标为负数，需要给每一个数组下标都加一个常量!!!"></a>需要注意的是，为防止数组下标为负数，需要给每一个数组下标都加一个常量!!!</h3>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B4%9B%E8%B0%B7/">洛谷</a>
+                    
+                      <a class="hover-with-bg" href="/tags/COCI/">COCI</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/20/%E6%B4%9B%E8%B0%B7P7757/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">洛谷P7757 [COCI2012-2013#3] AERODROM 题解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/14/CSP2021/">
+                        <span class="hidden-mobile">CSP2021 游记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://blog-waline-api-4xlzxx71d-cyc0916.vercel.app/","path":"window.location.pathname","placeholder":"发条友善的评论见证下~","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili/","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"wavatar","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true,"js":"https://cdn.jsdelivr.net/npm/@waline/client@1/dist/"},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":200,"height":400,"hOffset":-16,"vOffset":-16},"mobile":{"show":true},"react":{"opacity":0.75},"log":false});</script></body>
+</html>
+<script type="text/javascript" src="/js/love.js"></script>
