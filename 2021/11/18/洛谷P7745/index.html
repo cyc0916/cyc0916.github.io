@@ -12,6 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="题目传送门
 调了两个月终于调出来了
@@ -256,12 +258,12 @@
 <p><script type="math/tex">x</script>,   <script type="math/tex">y</script> 轴距离和相加即为两个控制点到 ROBOT 的曼哈顿距离。</p>
 <p>一提到预处理，首先我们想到的是前缀和。</p>
 <p>求数组前缀和的方式十分简单，仅需要写一个循环，例如下方代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">2000000</span>;i++) <br>    xa[i]=xa[i<span class="hljs-number">-1</span>]+xa[i]; <span class="hljs-comment">//计算前缀和核心代码，下同</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">2000000</span>;i++) <br>    ya[i]=ya[i<span class="hljs-number">-1</span>]+ya[i];<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">2000000</span>;i++) <br>    xa[i]=xa[i<span class="hljs-number">-1</span>]+xa[i]; <span class="hljs-comment">//计算前缀和核心代码，下同</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">2000000</span>;i++) <br>    ya[i]=ya[i<span class="hljs-number">-1</span>]+ya[i];<br></code></pre></div></td></tr></table></figure>
 <p>在得到前缀和后，根据题意，容易得出每次移动对于每个控制点到ROBOT的距离 $+1$ 或 <code>$-1$</code> ，我们只需要详细写出 $+1$ 或 $-1$ 即可。</p>
 <p>同样的，这边放一个 gif 来演示收到 “J” 指令是的操作情况。</p>
 <p><img src="https://bu.dusays.com/2021/11/16/127e4f7aab5b5.gif" srcset="/img/loading.gif" lazyload alt=""><br>(如果 gif 挂了请@或私信我)</p>
 <p>举例当指令为 “S” 时：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27;S&#x27;</span>)&#123;<br>    tot=+yn[y+zs]; <span class="hljs-comment">//需要+1的数</span><br>    tot-=n-yn[y+zs]; <span class="hljs-comment">//除去需要+1的，即为需要-1的</span><br>    y++; <span class="hljs-comment">//对应题目</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27;S&#x27;</span>)&#123;<br>    tot=+yn[y+zs]; <span class="hljs-comment">//需要+1的数</span><br>    tot-=n-yn[y+zs]; <span class="hljs-comment">//除去需要+1的，即为需要-1的</span><br>    y++; <span class="hljs-comment">//对应题目</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
 <p>在一系列例如上方的处理后，我们仅需要提前(在输入每个机器人坐标时)算出初始距离，并对这个初始距离进行加减即可。</p>
 <p>写完后发现时间复杂度仅有 <script type="math/tex">O(n+m)</script>，可以轻松通过</p>
 <p><strong>当然，此题也可以用 STL 中的 lower_bound 和 upper_bound 写。</strong></p>
